@@ -35,6 +35,7 @@ resource "tls_cert_request" "client" {
   private_key_pem = tls_private_key.client[count.index].private_key_pem
   dns_names       = lookup(var.client_certificate_subjects[count.index], "dns_names", null)
   ip_addresses    = lookup(var.client_certificate_subjects[count.index], "ip_addresses", null)
+  uris            = lookup(var.client_certificate_subjects[count.index], "uris", null)
   subject {
     common_name         = lookup(var.client_certificate_subjects[count.index], "common_name", null)
     country             = lookup(var.client_certificate_subjects[count.index], "country", null)
